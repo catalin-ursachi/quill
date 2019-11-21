@@ -24,6 +24,7 @@ case class FinagleMysqlContextConfig(config: Config) {
   def maxPrepareStatements = Try(config.getInt("maxPrepareStatements")).getOrElse(20)
   def connectTimeout = Try(config.getLong("connectTimeout")).getOrElse(1L)
   def noFailFast = Try(config.getBoolean("noFailFast")).getOrElse(false)
+  def defaultRowsPerFetch = Try(config.getInt("defaultRowsPerFetch")).getOrElse(20)
 
   def client = {
     var client = Mysql.client
